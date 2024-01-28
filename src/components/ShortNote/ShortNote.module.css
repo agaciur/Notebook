@@ -1,0 +1,18 @@
+.noteslist:hover,
+.noteslist.active {
+  background-color: var(--color-background);
+  border-bottom: none;
+}
+
+.noteslist {
+  display: flex;
+  padding: 0.4rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.noteslist img {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding-right: 0.5rem;
+}

@@ -1,0 +1,39 @@
+.notebooks {
+  padding: 1rem;
+  /* width: 270px; */
+  gap: 1rem;
+  background-color: var(--color-background);
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.notebooks h3 {
+  padding: 0.6rem 0;
+}
+
+.notebooks div {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.notebooks div button img {
+  margin-left: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.notebooks div button img:hover {
+  transform: rotate(90deg);
+}
+
+.notebooks div input {
+  padding: 0.7rem;
+}
+
+.notebooks div button {
+  border: none;
+  background: transparent;
+}

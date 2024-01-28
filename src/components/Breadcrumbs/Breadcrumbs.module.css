@@ -1,0 +1,35 @@
+.breadcrumbs {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background-color: var(--color-background);
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+}
+
+.breadcrumbs li a {
+  padding-right: 0.3rem;
+  color: var(--color-text-grey);
+  font-weight: 700;
+  background-color: transparent;
+}
+
+.breadcrumbs img {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding-right: 0.2rem;
+}
+
+.breadcrumbs li:last-of-type img {
+  display: none;
+}
+
+/* @media (min-width: 1025px) {
+  .breadcrumbs {
+    background-color: transparent;
+    padding-left: 0px;
+    font-size: 1rem;
+  }
+} */

@@ -1,0 +1,12 @@
+body {
+  --font-size-default: 16px;
+  --font-family-default: Helvetica, Arial, sans-serif;
+
+  --color-text-default: #231e1b;
+  --color-text-grey: #5a554d;
+  --color-white: #f9f9f9;
+  --color-background: #d6e1e0;
+  --color-background-two: #f3f6f6;
+  --color-hover: #a8b3b2;
+  --color-theme-main: #305b68;
+}
