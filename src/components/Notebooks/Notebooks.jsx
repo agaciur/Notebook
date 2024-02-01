@@ -1,18 +1,13 @@
 import styles from "./Notebooks.module.css"
 import { Notebook } from "../Notebook/Notebook"
-import ADD_ICON from "../../assets/add.svg"
-import { NavLink, Outlet } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { InputWithAddButton } from "../InputWithAddButton/InputWithAddButton"
 export function Notebooks({ listNotebooks }) {
   return (
     <>
       <div className={styles.notebooks}>
         <h3>Dodaj notatnik:</h3>
-        <div>
-          <input type='text' />
-          <button>
-            <img src={ADD_ICON} />
-          </button>
-        </div>
+        <InputWithAddButton />
         <h3>Notatniki:</h3>
         {listNotebooks.map(notebook => (
           <NavLink

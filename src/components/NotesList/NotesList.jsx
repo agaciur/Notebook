@@ -5,6 +5,7 @@ import ADD_ICON from "../../assets/add.svg"
 import { NavLink, useParams, Outlet } from "react-router-dom"
 import { notes } from "../../data/notes"
 import { ShortNote } from "../ShortNote/ShortNote"
+import { InputWithAddButton } from "../InputWithAddButton/InputWithAddButton"
 export function NotesList() {
   const [notesList, setNotesList] = useState(notes)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
@@ -29,12 +30,7 @@ export function NotesList() {
           ) : (
             <div className={styles.noteslist}>
               <h3>Dodaj notatkę:</h3>
-              <div>
-                <input type='text' />
-                <button>
-                  <img src={ADD_ICON} />
-                </button>
-              </div>
+              <InputWithAddButton />
               <h3>Notatki:</h3>
               <ul>
                 {notesList
@@ -58,12 +54,7 @@ export function NotesList() {
         <>
           <div className={styles.noteslist}>
             <h3>Dodaj notatkę:</h3>
-            <div>
-              <input type='text' />
-              <button>
-                <img src={ADD_ICON} />
-              </button>
-            </div>
+            <InputWithAddButton />
             <h3>Notatki:</h3>
             <ul>
               {notesList

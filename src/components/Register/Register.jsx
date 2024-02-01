@@ -1,7 +1,10 @@
 import styles from "./Register.module.css"
 import ERROR_ICON from "../../assets/error.svg"
+import PEN_ICON from "../../assets/pen.svg"
 import { useState } from "react"
 import { correctnessOfEmail } from "../utils/functions"
+import { Button } from "../Button/Button"
+import { motion } from "framer-motion"
 export function Register() {
   const [setInfo] = useState([])
   const [error, setError] = useState(null)
@@ -51,7 +54,17 @@ export function Register() {
   return (
     <div className={styles.register}>
       <h1>Zarejestruj się, aby tworzyć własne notatki:</h1>
-
+      <motion.img
+        src={PEN_ICON}
+        className={styles.pen}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+      />
       <form onSubmit={handleSubmit}>
         <label htmlFor='text'>Adres email:</label>
         <input type='email' />
@@ -72,7 +85,7 @@ export function Register() {
             <p>{error}</p>
           </div>
         )}
-        <button>Zarejestruj</button>
+        <Button>Zarejestruj</Button>
       </form>
     </div>
   )
