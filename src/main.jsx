@@ -8,6 +8,7 @@ import App from "./App.jsx"
 import { NotesList } from "./components/NotesList/NotesList.jsx"
 import { Note } from "./components/Note/Note.jsx"
 import { Register } from "./components/Register/Register.jsx"
+import { Todolist } from "./components/Todolist/Todolist.jsx"
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     element: <Register />,
     path: "/rejestracja",
+  },
+  {
+    element: <Todolist />,
+    path: "/todolist",
   },
 ])
 

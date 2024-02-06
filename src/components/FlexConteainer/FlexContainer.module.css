@@ -1,4 +1,5 @@
 .flexContainer {
   display: flex;
   height: 100vh - 91.23px;
+  width: 100%;
 }

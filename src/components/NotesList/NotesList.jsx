@@ -30,7 +30,7 @@ export function NotesList() {
           ) : (
             <div className={styles.noteslist}>
               <h3>Dodaj notatkę:</h3>
-              <InputWithAddButton />
+              <InputWithAddButton placeholder={"Nazwa notatki"} />
               <h3>Notatki:</h3>
               <ul>
                 {notesList
@@ -54,7 +54,7 @@ export function NotesList() {
         <>
           <div className={styles.noteslist}>
             <h3>Dodaj notatkę:</h3>
-            <InputWithAddButton />
+            <InputWithAddButton placeholder={"Nazwa notatnika"} />
             <h3>Notatki:</h3>
             <ul>
               {notesList

@@ -1,0 +1,21 @@
+/* .todoIcon {
+  padding: 4rem 0;
+} */
+.todoIcon span {
+  width: 70%;
+}
+
+.todoIcon button img {
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0.1rem;
+}
+
+.todoIcon button img:hover {
+  transform: scale(1.2);
+}
+
+.todoIcon button {
+  background-color: transparent;
+  border: none;
+}

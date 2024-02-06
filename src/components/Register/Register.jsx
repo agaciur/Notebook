@@ -1,13 +1,41 @@
 import styles from "./Register.module.css"
 import ERROR_ICON from "../../assets/error.svg"
-import PEN_ICON from "../../assets/pen.svg"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { correctnessOfEmail } from "../utils/functions"
-import { Button } from "../Button/Button"
-import { motion } from "framer-motion"
+import { ButtonCircle } from "../ButtonCircle/ButtonCircle"
+import PEN_ICON from "../../assets/pen.svg"
+import NOTE_ICON from "../../assets/note.svg"
+import { star, heart, hand, plane, lightning, note } from "./paths"
+import { motion, useMotionValue, useTransform, animate } from "framer-motion"
+import { getIndex, useFlubber } from "./use-flubber"
 export function Register() {
   const [setInfo] = useState([])
   const [error, setError] = useState(null)
+
+  const paths = [lightning, hand, plane, heart, note, star, lightning]
+  const colors = ["#00cc88", "#0099ff", "#8855ff", "#ff0055", "#ee4444", "#ffcc00", "#00cc88"]
+
+  const [pathIndex, setPathIndex] = useState(0)
+  const progress = useMotionValue(pathIndex)
+  const fill = useTransform(progress, paths.map(getIndex), colors)
+  const path = useFlubber(progress, paths)
+
+  useEffect(() => {
+    const animation = animate(progress, pathIndex, {
+      duration: 0.8,
+      ease: "easeInOut",
+      onComplete: () => {
+        if (pathIndex === paths.length - 1) {
+          progress.set(0)
+          setPathIndex(1)
+        } else {
+          setPathIndex(pathIndex + 1)
+        }
+      },
+    })
+
+    return () => animation.stop()
+  }, [pathIndex])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -65,6 +93,16 @@ export function Register() {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       />
+
+      {/* <svg className={styles.svg}>
+        <g transform='translate(4 4) scale(3 3)'>
+          <motion.path
+            fill={fill}
+            d={path}
+          />
+        </g>
+      </svg> */}
+
       <form onSubmit={handleSubmit}>
         <label htmlFor='text'>Adres email:</label>
         <input type='email' />
@@ -79,13 +117,13 @@ export function Register() {
           type='password'
           id='password2'
         />
+        <ButtonCircle onClick={handleSubmit}> Zarejestruj</ButtonCircle>
         {error && (
           <div className={styles.error}>
             <img src={ERROR_ICON} />
             <p>{error}</p>
           </div>
         )}
-        <Button>Zarejestruj</Button>
       </form>
     </div>
   )

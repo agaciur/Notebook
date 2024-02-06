@@ -1,9 +1,17 @@
 .register {
+  margin: auto 0;
   height: 100vh;
   background-color: var(--color-background);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.svg {
+  margin-top: 2rem;
+  width: 100px;
+  height: 100px;
 }
 
 .register h1 {
@@ -20,9 +28,11 @@
 
 .register form {
   padding: 1rem;
-  width: 360px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-background);
 }
 
 .register form input {
@@ -38,7 +48,7 @@
 }
 
 .error {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
   display: flex;
   justify-content: center;

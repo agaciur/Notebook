@@ -1,0 +1,39 @@
+.todolist {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.todolist ul,
+.todolist li {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.todolist ul {
+  position: relative;
+  max-width: 800px;
+}
+
+.todolist li {
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  padding: 15px 18px;
+  /* position: relative; */
+  background: var(--color-background);
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: grab;
+}

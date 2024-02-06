@@ -7,7 +7,7 @@ export function Notebooks({ listNotebooks }) {
     <>
       <div className={styles.notebooks}>
         <h3>Dodaj notatnik:</h3>
-        <InputWithAddButton />
+        <InputWithAddButton placeholder={"Nazwa natatnika"} />
         <h3>Notatniki:</h3>
         {listNotebooks.map(notebook => (
           <NavLink

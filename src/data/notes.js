@@ -29,4 +29,16 @@ export const notes = [
     title: "miesiąc maj",
     body: "  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae corrupti consequuntur quod earum alias iste labore ab magni, ullam possimus?",
   },
+  {
+    id: 6,
+    notebookId: 1,
+    title: "miesiąc maj",
+    body: [
+      "zrobić zakupy",
+      "zjeść śniadanie",
+      "wyrzucić śmieci",
+      "zapłacić rachunki",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem non ad rerum nihil. Voluptatem perspiciatis consequatur quos facere esse minima.",
+    ],
+  },
 ]
