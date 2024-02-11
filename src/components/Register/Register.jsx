@@ -4,6 +4,7 @@ import { useState } from "react"
 import { correctnessOfEmail } from "../utils/functions"
 import { ButtonCircle } from "../ButtonCircle/ButtonCircle"
 import PEN_ICON from "../../assets/pen.svg"
+import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 
 export function Register() {
@@ -81,6 +82,7 @@ export function Register() {
           id='password2'
         />
         <ButtonCircle eventOnClick={handleSubmit}>Zarejestruj</ButtonCircle>
+        <Link to={"/zaloguj"}>Powrót do logowania</Link>
         {error && (
           <div className={styles.error}>
             <img src={ERROR_ICON} />

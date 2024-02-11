@@ -63,6 +63,19 @@
   background-color: var(--color-theme-main);
 }
 
+.login form a {
+  margin-top: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-theme-main);
+  transition: transform 0.3s, color 0.3s;
+}
+
+.login form a:hover {
+  color: var(--color-text-grey);
+  transform: scale(1.2);
+}
+
 .error {
   margin-top: 1rem;
   padding: 1rem;

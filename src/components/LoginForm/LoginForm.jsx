@@ -4,7 +4,7 @@ import PEN_ICON from "../../assets/pen.svg"
 import ERROR_ICON from "../../assets/error.svg"
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 export function LoginForm() {
   const [email, setEmail] = useState(process.env.NODE_ENV === "development" ? "root@root.pl" : "")
 
@@ -71,6 +71,7 @@ export function LoginForm() {
 
         <ButtonCircle eventOnClick={handleSubmit}>Zaloguj się</ButtonCircle>
 
+        <Link to={"/rejestracja"}>Rejestracja</Link>
         {error && (
           <div className={styles.error}>
             <img src={ERROR_ICON} />
