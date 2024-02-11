@@ -14,7 +14,6 @@ import { TodoItem } from "../TodoItem/TodoItem"
 
 export function Todolist({ todoList }) {
   const [items, setItems] = useState(todoList)
-  console.log(items)
   return (
     <div className={styles.todolist}>
       <InputWithAddButton placeholder={"Dodaj zadanie"} />

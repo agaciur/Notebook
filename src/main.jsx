@@ -8,12 +8,14 @@ import App from "./App.jsx"
 import { NotesList } from "./components/NotesList/NotesList.jsx"
 import { Note } from "./components/Note/Note.jsx"
 import { Register } from "./components/Register/Register.jsx"
-import { Todolist } from "./components/Todolist/Todolist.jsx"
+import { Login } from "./views/Login.jsx"
+import { NotebooksLoader } from "./api/NotebooksLoader.js"
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
+    loader: NotebooksLoader,
     children: [
       {
         element: <NotesList />,
@@ -32,8 +34,8 @@ const router = createBrowserRouter([
     path: "/rejestracja",
   },
   {
-    element: <Todolist />,
-    path: "/todolist",
+    element: <Login />,
+    path: "/zaloguj",
   },
 ])
 

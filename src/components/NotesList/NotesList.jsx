@@ -54,7 +54,7 @@ export function NotesList() {
         <>
           <div className={styles.noteslist}>
             <h3>Dodaj notatkę:</h3>
-            <InputWithAddButton placeholder={"Nazwa notatnika"} />
+            <InputWithAddButton placeholder={"Nazwa notatki"} />
             <h3>Notatki:</h3>
             <ul>
               {notesList
