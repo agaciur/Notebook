@@ -4,14 +4,6 @@ import { Reorder } from "framer-motion"
 import { useState } from "react"
 import { TodoItem } from "../TodoItem/TodoItem"
 
-// const todoList = [
-//   "zrobić zakupy",
-//   "zjeść śniadanie",
-//   "wyrzucić śmieci",
-//   "zapłacić rachunki",
-//   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem non ad rerum nihil. Voluptatem perspiciatis consequatur quos facere esse minima.",
-// ]
-
 export function Todolist({ todoList }) {
   const [items, setItems] = useState(todoList)
   return (

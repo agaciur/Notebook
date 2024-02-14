@@ -4,5 +4,10 @@ export function NotebooksLoader() {
       "Content-Type": "application/json",
       Authorization: "Bearer " + localStorage.getItem("jwtToken"),
     },
+  }).then(response => {
+    if (response.status === 401) {
+      window.location.href = "/zaloguj"
+    }
+    return response.json()
   })
 }

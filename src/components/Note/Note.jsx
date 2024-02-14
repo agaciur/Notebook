@@ -1,40 +1,32 @@
 import styles from "./Note.module.css"
-import { notes } from "../../data/notes"
-import { useParams } from "react-router-dom"
+import { useParams, useLoaderData } from "react-router-dom"
 import { Todolist } from "../Todolist/Todolist"
 import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs"
 export function Note() {
   const { noteId } = useParams()
+  const note = useLoaderData()
 
   return (
     <div className={styles.note}>
       {/* <Breadcrumbs /> */}
-      {notes
-        .filter(note => note.id === Number(noteId))
-        .map(note => {
-          if (Array.isArray(note.body)) {
-            return (
-              <div key={note.id}>
-                <h3>{note.title}</h3>
-                <Todolist todoList={note.body} />
-              </div>
-            )
-          } else {
-            return (
-              <div key={note.id}>
-                <h3>{note.title}</h3>
-                <p>{note.body}</p>
-              </div>
-            )
-          }
+      {Array.isArray(note.content) ? (
+        <div key={note.id}>
+          <h3>{note.title}</h3>
+          <Todolist todoList={note.content} />
+        </div>
+      ) : (
+        <div key={note.id}>
+          <h3>{note.title}</h3>
+          <p>{note.content}</p>
+        </div>
+      )}
 
-          // return (
+      {/* // return (
           //   <div key={note.id}>
           //     <h3>{note.title}</h3>
           //     <p>{note.body}</p>
           //   </div>
-          // )
-        })}
+          // ) */}
     </div>
   )
 }

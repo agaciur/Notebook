@@ -4,12 +4,15 @@ import { Notebooks } from "./components/Notebooks/Notebooks"
 import { Breadcrumbs } from "./components/Breadcrumbs/Breadcrumbs"
 import { useState, useEffect } from "react"
 import { FlexContainer } from "./components/FlexConteainer/FlexContainer"
-import { Outlet, useParams, useNavigate } from "react-router-dom"
+import { Outlet, useParams, useNavigate, useLoaderData } from "react-router-dom"
 import { MobileComponent } from "./components/MobileComponent/MobileComponent"
-import { listnotebooks } from "./data/listnotebooks"
+
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
+
   const { folderId } = useParams()
+  const notebooks = useLoaderData()
+
   let navigate = useNavigate()
   useEffect(() => {
     const handleResize = () => {
@@ -21,10 +24,10 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (localStorage.getItem("jwtToken") === null) {
+    if (localStorage.getItem("jwtToken") === null || notebooks.code === 401) {
       navigate("/zaloguj")
     }
-  }, [localStorage.getItem("jwtToken")])
+  }, [localStorage.getItem("jwtToken"), notebooks.code])
 
   return (
     <>
@@ -32,13 +35,13 @@ function App() {
         <MobileComponent>
           <Logo />
           <Breadcrumbs />
-          {folderId ? <Outlet /> : <Notebooks listNotebooks={listnotebooks} />}
+          {folderId ? <Outlet /> : <Notebooks notebooks={notebooks} />}
         </MobileComponent>
       ) : (
         <Layout>
           <Logo />
           <FlexContainer>
-            <Notebooks listNotebooks={listnotebooks} />
+            <Notebooks notebooks={notebooks} />
             <Outlet />
           </FlexContainer>
         </Layout>

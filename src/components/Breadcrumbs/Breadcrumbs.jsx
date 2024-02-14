@@ -1,8 +1,6 @@
 import styles from "./Breadcrumbs.module.css"
 import ARROW_ICON from "../../assets/arrow.svg"
-import { useParams, NavLink } from "react-router-dom"
-import { notes } from "../../data/notes"
-import { listnotebooks } from "../../data/listnotebooks"
+import { useParams, NavLink, useLoaderData } from "react-router-dom"
 export function Breadcrumbs() {
   const { folderId, noteId } = useParams()
   const breadcrumbs = [
@@ -12,16 +10,21 @@ export function Breadcrumbs() {
     },
   ]
   if (folderId) {
-    const note = listnotebooks.filter(note => note.id === Number(folderId))
+    const folder = useLoaderData()
+    const note = folder.filter(note => note.id === Number(folderId))
     breadcrumbs.push({
       name: note[0].title,
       path: `/notes/${folderId}`,
     })
   }
   if (noteId) {
-    const note = notes.filter(note => note.folderId === Number(folderId) || note.id === Number(noteId))
+    const notes = useLoaderData()
+    const folder = notes.filter(note => note.id === Number(folderId))
+
+    const listNote = folder[0].notes
+    const thisNote = listNote.filter(note => note.id === Number(noteId))
     breadcrumbs.push({
-      name: note[0].title,
+      name: thisNote[0].title,
       path: `/notes/${folderId}/note/${noteId}`,
     })
   }

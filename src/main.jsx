@@ -10,6 +10,8 @@ import { Note } from "./components/Note/Note.jsx"
 import { Register } from "./components/Register/Register.jsx"
 import { Login } from "./views/Login.jsx"
 import { NotebooksLoader } from "./api/NotebooksLoader.js"
+import { NotesListLoader } from "./api/NotesListLoader.js"
+import { NoteLoader } from "./api/NoteLoader.js"
 
 const router = createBrowserRouter([
   {
@@ -20,10 +22,12 @@ const router = createBrowserRouter([
       {
         element: <NotesList />,
         path: "/notes/:folderId",
+        loader: NotebooksLoader,
         children: [
           {
             path: "note/:noteId",
             element: <Note />,
+            loader: NoteLoader,
           },
         ],
       },
