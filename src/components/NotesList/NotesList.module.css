@@ -37,3 +37,45 @@
 .noteslist div input {
   padding: 0.7rem;
 } */
+
+div .arrowIcon {
+  display: flex;
+  justify-content: end;
+  margin: 0;
+}
+
+.buttonArray {
+  border: none;
+  background-color: transparent;
+}
+
+.buttonArray img {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.buttonArray img:hover {
+  transform: scale(1.3);
+}
+
+.hideBar {
+  width: 40px;
+  background-color: var(--color-background-two);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.hideBar p {
+  margin: 0.5rem;
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.hideBar .buttonArray {
+  margin: 13px 0.5rem;
+  rotate: 180deg;
+}
