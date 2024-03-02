@@ -4,7 +4,7 @@
   background-color: var(--color-background);
   display: flex;
   align-items: center;
-  padding-left: 1rem;
+  padding: 0 1rem;
   flex-wrap: wrap;
   font-size: 0.75rem;
 }
