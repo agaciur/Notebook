@@ -3,12 +3,15 @@ import PEN_ICON from "../../assets/pen.svg"
 import ACCOUNT_ICON from "../../assets/account.svg"
 import SETTING_ICON from "../../assets/settings.svg"
 import LOGOUT_ICON from "../../assets/log-out.svg"
+import SEARCH_ICON from "../../assets/search.svg"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
+import { isCLickAccount } from "../../hooks/IsClickAccountContext"
 
 export function Logo() {
-  const [clickAccount, setClickAccount] = useState(false)
+  const { clickAccount, setClickAccount } = useContext(isCLickAccount)
+  const [showSearchInput, setShowSearchInput] = useState(false)
   const buttonRef = useRef(null)
   const ulRef = useRef(null)
 
@@ -46,35 +49,50 @@ export function Logo() {
         <h1>Notes</h1>
       </div>
 
-      <div>
-        <motion.button
-          ref={buttonRef}
-          whileTap={{ scale: 0.9 }}
-          onClick={handleClick}>
-          <img
-            className={styles.logout}
-            src={ACCOUNT_ICON}
-          />
-        </motion.button>
+      <div className={styles.topIcon}>
+        <div class={styles.searchBox}>
+          {showSearchInput && (
+            <input
+              type='text'
+              placeholder='Czego szukasz?'
+            />
+          )}
 
-        {clickAccount && (
-          <ul
-            className={styles.account}
-            ref={ulRef}>
-            <li>
-              <Link>
-                <img src={SETTING_ICON} />
-                <span>Ustawienia</span>
-              </Link>
-            </li>
-            <li>
-              <button onClick={handleLogout}>
-                <img src={LOGOUT_ICON} />
-                <span>Wyloguj</span>
-              </button>
-            </li>
-          </ul>
-        )}
+          <motion.button onClick={() => setShowSearchInput(!showSearchInput)}>
+            <img src={SEARCH_ICON} />
+          </motion.button>
+        </div>
+
+        <div>
+          <motion.button
+            ref={buttonRef}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleClick}>
+            <img
+              className={styles.logout}
+              src={ACCOUNT_ICON}
+            />
+          </motion.button>
+
+          {clickAccount && (
+            <ul
+              className={styles.account}
+              ref={ulRef}>
+              <li>
+                <Link>
+                  <img src={SETTING_ICON} />
+                  <span>Ustawienia</span>
+                </Link>
+              </li>
+              <li>
+                <button onClick={handleLogout}>
+                  <img src={LOGOUT_ICON} />
+                  <span>Wyloguj</span>
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   )

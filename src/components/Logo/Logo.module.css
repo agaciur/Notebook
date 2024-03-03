@@ -25,13 +25,32 @@
   background-color: transparent;
 }
 
-.logo .logout {
+.topIcon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.searchBox {
+  display: flex;
+}
+
+.logo .logout,
+.logo .searchBox img {
   width: 3rem;
   height: 3rem;
   transition: transform 0.3s;
 }
 
-.logo .logout:hover {
+.logo .searchBox input {
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  width: 10rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--color-backgorund);
+}
+
+.logo .logout:hover,
+.logo .searchBox img:hover {
   transform: scale(1.3);
 }
 

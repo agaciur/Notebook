@@ -2,15 +2,20 @@ import styles from "./Note.module.css"
 import { useParams, useLoaderData } from "react-router-dom"
 import { Todolist } from "../Todolist/Todolist"
 import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs"
-import React, { useRef } from "react"
+import React, { useContext } from "react"
+import { isCLickAccount } from "../../hooks/IsClickAccountContext"
 import { Editor } from "@tinymce/tinymce-react"
 export function Note() {
   const { noteId } = useParams()
   const note = useLoaderData()
-  const editorRef = useRef(null)
+  const { setClickAccount } = useContext(isCLickAccount)
 
   function handleEditorChange(e) {
     console.log("zmieniono notatkę")
+  }
+
+  function handleFocusChange(e) {
+    setClickAccount(false)
   }
 
   return (
@@ -20,6 +25,7 @@ export function Note() {
           apiKey='srlddd1qxwh6gmrys6jtp47e5j4n0hl3g2p1c0i3g3hv9e60'
           key={note.id}
           onEditorChange={handleEditorChange}
+          onFocus={handleFocusChange}
           init={{
             spellchecker_language: "pl",
             selector: "textarea",
