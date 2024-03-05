@@ -4,26 +4,25 @@ import { useState } from "react"
 import { correctnessOfEmail } from "../utils/functions"
 import { ButtonCircle } from "../ButtonCircle/ButtonCircle"
 import PEN_ICON from "../../assets/pen.svg"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 
 export function Register() {
-  const [setInfo] = useState([])
+  const [emailRegister, setEmailRegister] = useState("")
+  const [password1, setPassword1] = useState("")
+  const [password2, setPassword2] = useState("")
+
   const [error, setError] = useState(null)
+  let navigate = useNavigate()
+
   const handleSubmit = function (event) {
     event.preventDefault()
-    const email = event.target[0].value
-    if (email.match(correctnessOfEmail) == null) {
+
+    if (emailRegister.match(correctnessOfEmail) == null) {
       setError("Adres email nie jest poprawny!")
     } else {
-      if (event.target[1].value === event.target[2].value) {
-        setInfo(prevInfo => [
-          ...prevInfo,
-          {
-            email: email,
-            password: event.target[1].value,
-          },
-        ])
+      if (password1 === password2) {
+        handleSubmitRegistration(event)
       } else {
         setError("Hasło nie jest identyczne!")
       }
@@ -32,7 +31,7 @@ export function Register() {
 
   function checkPassword(event) {
     const password = event.target.value
-    console.log(password)
+
     if (password.length < 8) {
       setError("Hasło musi mieć przynajmniej 8 znaków!")
     } else {
@@ -49,6 +48,32 @@ export function Register() {
       } else {
         setError("Hasło musi posiadać duże i małe litery!")
       }
+    }
+    setPassword1(password)
+  }
+
+  const handleSubmitRegistration = async function (event) {
+    await fetch("https://notes-api.ittools.pl/api/users/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: emailRegister,
+        password: password1,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => postRegisterProcess(data))
+      .catch(error => setError(error.message))
+  }
+
+  function postRegisterProcess(data) {
+    if (data.token) {
+      localStorage.setItem("jwtToken", data.token)
+      navigate("/")
+    } else {
+      setError("Nieprawidłowe dane rejestracji")
     }
   }
 
@@ -69,17 +94,24 @@ export function Register() {
 
       <form>
         <label htmlFor='text'>Adres email:</label>
-        <input type='email' />
+        <input
+          type='email'
+          value={emailRegister}
+          onChange={e => setEmailRegister(e.target.value)}
+        />
         <label htmlFor='password'>Hasło:</label>
         <input
           type='password'
           id='password'
+          value={password1}
           onChange={checkPassword}
         />
         <label htmlFor='password'>Powtórz hasło:</label>
         <input
           type='password'
+          value={password2}
           id='password2'
+          onChange={e => setPassword2(e.target.value)}
         />
         <ButtonCircle eventOnClick={handleSubmit}>Zarejestruj</ButtonCircle>
         <Link to={"/zaloguj"}>Powrót do logowania</Link>

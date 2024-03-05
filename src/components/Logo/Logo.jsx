@@ -50,7 +50,7 @@ export function Logo() {
       </div>
 
       <div className={styles.topIcon}>
-        <div class={styles.searchBox}>
+        <div className={styles.searchBox}>
           {showSearchInput && (
             <input
               type='text'
