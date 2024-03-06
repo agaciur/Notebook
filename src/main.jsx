@@ -10,8 +10,8 @@ import { Note } from "./components/Note/Note.jsx"
 import { Register } from "./components/Register/Register.jsx"
 import { Login } from "./views/Login.jsx"
 import { NotebooksLoader } from "./api/NotebooksLoader.js"
-import { NotesListLoader } from "./api/NotesListLoader.js"
 import { NoteLoader } from "./api/NoteLoader.js"
+import { SearchResult } from "./components/SearchResult.jsx/SearchResult.jsx"
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
             loader: NoteLoader,
           },
         ],
+      },
+      {
+        element: <SearchResult />,
+        path: "/wyszukaj/:termSearch?",
       },
     ],
   },

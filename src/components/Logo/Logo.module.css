@@ -42,11 +42,21 @@
 }
 
 .logo .searchBox input {
-  margin-right: 0.5rem;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   width: 10rem;
   padding: 0 0.5rem;
   border: 1px solid var(--color-backgorund);
+}
+
+.logo .searchBox .btnSearch {
+  margin-right: 0.5rem;
+  border-radius: 0 5px 5px 0;
+  width: 5rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--color-text-grey);
+  background-color: var(--color-text-grey);
+  color: var(--color-white);
+  font-weight: 700;
 }
 
 .logo .logout:hover,
@@ -109,12 +119,27 @@
 
   .logo .searchBox input {
     position: absolute;
+    border-radius: 5px 0 0 5px;
+    top: 70px;
+    right: 93px;
+    width: 10rem;
+    height: 2rem;
+    padding: 1rem 0.5rem;
+    border: 1px solid var(--color-backgorund);
+  }
+
+  .logo .searchBox .btnSearch {
+    position: absolute;
     top: 70px;
     right: 5px;
     margin-right: 0.5rem;
-    border-radius: 5px;
-    width: 10rem;
-    padding: 1rem 0.5rem;
-    border: 1px solid var(--color-backgorund);
+    border-radius: 0 5px 5px 0;
+    width: 5rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--color-text-grey);
+    background-color: var(--color-text-grey);
+    color: var(--color-white);
+    font-weight: 700;
   }
 }

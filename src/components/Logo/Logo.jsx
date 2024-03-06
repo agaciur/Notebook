@@ -8,21 +8,43 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { useState, useRef, useEffect, useContext } from "react"
 import { isCLickAccount } from "../../hooks/IsClickAccountContext"
+import { ButtonCircle } from "../ButtonCircle/ButtonCircle"
 
-export function Logo() {
+export function Logo({ term, setTerm, searchResult }) {
   const { clickAccount, setClickAccount } = useContext(isCLickAccount)
   const [showSearchInput, setShowSearchInput] = useState(false)
   const buttonRef = useRef(null)
   const ulRef = useRef(null)
+  const searchRef = useRef()
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken")
     window.location.href = "/zaloguj"
   }
 
+  const onKeyDownHendler = e => {
+    if (e.key === "Enter") {
+      search()
+    }
+  }
+
+  const search = function () {
+    searchResult()
+  }
+
   const handleClick = () => {
     setClickAccount(!clickAccount)
   }
+
+  const focusInput = () => {
+    if (searchRef.current) {
+      searchRef.current.focus()
+    }
+  }
+
+  useEffect(() => {
+    focusInput()
+  }, [showSearchInput])
 
   const handleClickOutside = event => {
     if (
@@ -52,10 +74,21 @@ export function Logo() {
       <div className={styles.topIcon}>
         <div className={styles.searchBox}>
           {showSearchInput && (
-            <input
-              type='text'
-              placeholder='Czego szukasz?'
-            />
+            <>
+              <input
+                ref={searchRef}
+                value={term}
+                onKeyDown={onKeyDownHendler}
+                onChange={e => setTerm(e.target.value)}
+                type='text'
+                placeholder='Czego szukasz?'
+              />
+              <button
+                className={styles.btnSearch}
+                onClick={search}>
+                Szukaj
+              </button>
+            </>
           )}
 
           <motion.button onClick={() => setShowSearchInput(!showSearchInput)}>
