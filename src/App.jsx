@@ -14,6 +14,7 @@ function App() {
   const [clickAccount, setClickAccount] = useState(false)
   const [term, setTerm] = useState("")
   const [searchNotebooks, setSearchNotebooks] = useState([])
+  const [searchNotes, setSearchNotes] = useState([])
 
   const { folderId, termSearch } = useParams()
   const notebooks = useLoaderData()
@@ -34,6 +35,8 @@ function App() {
   }, [localStorage.getItem("jwtToken"), notebooks.code])
 
   const searchResult = function () {
+    setSearchNotebooks([])
+    setSearchNotes([])
     navigate(`/wyszukaj/${term}`)
 
     notebooks.forEach(object => {
@@ -42,7 +45,10 @@ function App() {
       }
       object.notes.forEach(note => {
         if (note.title.toLowerCase().includes(term.toLowerCase())) {
-          setSearchNotebooks(prevSearchNotebooks => [...prevSearchNotebooks, object])
+          setSearchNotes(prevSearchNotes => [
+            ...prevSearchNotes,
+            { note: note.title, folderId: object.id, noteId: note.id },
+          ])
         }
       })
     })
@@ -61,6 +67,7 @@ function App() {
             {termSearch ? (
               <SearchResult
                 searchNotebooks={searchNotebooks}
+                searchNotes={searchNotes}
                 term={term}
               />
             ) : (
@@ -81,6 +88,7 @@ function App() {
               <SearchResult
                 searchNotebooks={searchNotebooks}
                 term={term}
+                searchNotes={searchNotes}
               />
             ) : (
               <FlexContainer>

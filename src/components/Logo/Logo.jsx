@@ -8,8 +8,6 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { useState, useRef, useEffect, useContext } from "react"
 import { isCLickAccount } from "../../hooks/IsClickAccountContext"
-import { ButtonCircle } from "../ButtonCircle/ButtonCircle"
-
 export function Logo({ term, setTerm, searchResult }) {
   const { clickAccount, setClickAccount } = useContext(isCLickAccount)
   const [showSearchInput, setShowSearchInput] = useState(false)
@@ -30,6 +28,7 @@ export function Logo({ term, setTerm, searchResult }) {
 
   const search = function () {
     searchResult()
+    setShowSearchInput(false)
   }
 
   const handleClick = () => {
@@ -64,12 +63,17 @@ export function Logo({ term, setTerm, searchResult }) {
     }
   }, [])
 
+  function handleClickOnSearch() {
+    setShowSearchInput(!showSearchInput)
+    setTerm("")
+  }
+
   return (
     <div className={styles.logo}>
-      <div>
+      <Link to={"/"}>
         <img src={PEN_ICON} />
         <h1>Notes</h1>
-      </div>
+      </Link>
 
       <div className={styles.topIcon}>
         <div className={styles.searchBox}>
@@ -91,7 +95,7 @@ export function Logo({ term, setTerm, searchResult }) {
             </>
           )}
 
-          <motion.button onClick={() => setShowSearchInput(!showSearchInput)}>
+          <motion.button onClick={handleClickOnSearch}>
             <img src={SEARCH_ICON} />
           </motion.button>
         </div>
