@@ -4,10 +4,11 @@ import { Notebooks } from "./components/Notebooks/Notebooks"
 import { Breadcrumbs } from "./components/Breadcrumbs/Breadcrumbs"
 import { useState, useEffect, createContext } from "react"
 import { FlexContainer } from "./components/FlexConteainer/FlexContainer"
-import { Outlet, useParams, useNavigate, useLoaderData } from "react-router-dom"
+import { Outlet, useParams, useNavigate, useLoaderData, useLocation } from "react-router-dom"
 import { MobileComponent } from "./components/MobileComponent/MobileComponent"
 import { isCLickAccount } from "./hooks/IsClickAccountContext"
 import { SearchResult } from "./components/SearchResult.jsx/SearchResult"
+import { Archive } from "./components/Archive/Archive"
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
@@ -19,6 +20,7 @@ function App() {
   const { folderId, termSearch } = useParams()
   const notebooks = useLoaderData()
   let navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const handleResize = () => {
@@ -70,6 +72,8 @@ function App() {
                 searchNotes={searchNotes}
                 term={term}
               />
+            ) : location.pathname === "/archiwum" ? (
+              <Archive />
             ) : (
               <>
                 <Breadcrumbs />
@@ -90,6 +94,8 @@ function App() {
                 term={term}
                 searchNotes={searchNotes}
               />
+            ) : location.pathname === "/archiwum" ? (
+              <Archive />
             ) : (
               <FlexContainer>
                 <Notebooks notebooks={notebooks} />

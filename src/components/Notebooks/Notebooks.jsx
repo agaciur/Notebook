@@ -2,7 +2,7 @@ import styles from "./Notebooks.module.css"
 import { Notebook } from "../Notebook/Notebook"
 import ARCHIVE_ICON from "../../assets/archive.svg"
 import ARROW_TRIANGLE_ICON from "../../assets/arrow-triangle.svg"
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import { InputWithAddButton } from "../InputWithAddButton/InputWithAddButton"
 import { useState } from "react"
 export function Notebooks({ notebooks }) {
@@ -32,6 +32,7 @@ export function Notebooks({ notebooks }) {
 
             <h3>Dodaj notatnik:</h3>
             <InputWithAddButton placeholder={"nazwa natatnika"} />
+
             <h3>Notatniki:</h3>
             {notebooks.map(notebook => (
               <NavLink
@@ -44,10 +45,10 @@ export function Notebooks({ notebooks }) {
             ))}
           </div>
           <div className={styles.archive}>
-            <button>
+            <Link to={"/archiwum"}>
               <img src={ARCHIVE_ICON} />
-              <p>Archiwum</p>
-            </button>
+              Archiwum
+            </Link>
           </div>
         </div>
       )}
