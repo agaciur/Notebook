@@ -13,6 +13,7 @@ import { NotebooksLoader } from "./api/NotebooksLoader.js"
 import { NoteLoader } from "./api/NoteLoader.js"
 import { SearchResult } from "./components/SearchResult.jsx/SearchResult.jsx"
 import { Archive } from "./components/Archive/Archive.jsx"
+import { Settings } from "./components/Settings/Settings.jsx"
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         element: <Archive />,
         path: "/archiwum",
+      },
+      {
+        element: <Settings />,
+        path: "/ustawienia",
       },
     ],
   },

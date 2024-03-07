@@ -9,6 +9,7 @@ import { MobileComponent } from "./components/MobileComponent/MobileComponent"
 import { isCLickAccount } from "./hooks/IsClickAccountContext"
 import { SearchResult } from "./components/SearchResult.jsx/SearchResult"
 import { Archive } from "./components/Archive/Archive"
+import { Settings } from "./components/Settings/Settings"
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
@@ -74,6 +75,8 @@ function App() {
               />
             ) : location.pathname === "/archiwum" ? (
               <Archive />
+            ) : location.pathname === "/ustawienia" ? (
+              <Settings />
             ) : (
               <>
                 <Breadcrumbs />
@@ -96,6 +99,8 @@ function App() {
               />
             ) : location.pathname === "/archiwum" ? (
               <Archive />
+            ) : location.pathname === "/ustawienia" ? (
+              <Settings />
             ) : (
               <FlexContainer>
                 <Notebooks notebooks={notebooks} />

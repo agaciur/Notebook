@@ -35,7 +35,7 @@
 }
 
 .archive a:hover {
-  color: var(--color-theme-main);
+  background-color: var(--color-hover);
 }
 
 .arrowIcon {

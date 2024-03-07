@@ -45,10 +45,10 @@ export function Notebooks({ notebooks }) {
             ))}
           </div>
           <div className={styles.archive}>
-            <Link to={"/archiwum"}>
+            <NavLink to={"/archiwum"}>
               <img src={ARCHIVE_ICON} />
               Archiwum
-            </Link>
+            </NavLink>
           </div>
         </div>
       )}

@@ -116,7 +116,7 @@ export function Logo({ term, setTerm, searchResult }) {
               className={styles.account}
               ref={ulRef}>
               <li>
-                <Link>
+                <Link to={"/ustawienia"}>
                   <img src={SETTING_ICON} />
                   <span>Ustawienia</span>
                 </Link>
