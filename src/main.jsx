@@ -14,11 +14,13 @@ import { NoteLoader } from "./api/NoteLoader.js"
 import { SearchResult } from "./components/SearchResult.jsx/SearchResult.jsx"
 import { Archive } from "./components/Archive/Archive.jsx"
 import { Settings } from "./components/Settings/Settings.jsx"
+import { createNotebook } from "./components/InputWithAddButton/InputWithAddButton.jsx"
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
+    action: createNotebook,
     loader: NotebooksLoader,
     children: [
       {
